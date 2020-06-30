@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikachu, eu escolho você!</title>
+    <link rel="shortcut icon" href="imgs/pokeball.png">
+     <audio controls>
+         <source src="sounds/y2mate.com - Hau'oli City_P6VYifDDIrE.mp3" type="audio/mpeg">
+     </audio>
+    <style>
+        body{
+        background-image:url(imgs/paisagem.png);
+        background-position: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        }
+        img{
+        margin-top: 600px;
+        position: absolute;
+        }
+        button{
+            width: 100px;
+            height: 80px;
+            font-size: large;
+            color: azure;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <div id="Pikachu"></div>
+    <button id="novo">Novo Pikachu</button>
+    <button id="menos">Tirar pikachu</button>
+    <script>
+        window.alert('Olá! , esse é um simples site para você aproveitar (se quiser) de um lo-fi de pokemon top e do seu Pokemon favorito ... o Pikachu! Seja feliz!')
+class pikachu{
+    constructor(){
+        this.x = 0
+        this.pikachuEl = document.createElement('img')
+        this.pikachuEl.src = 'imgs/pikachu.gif'
+        document.querySelector('#Pikachu').appendChild(this.pikachuEl)
+    }
+    correr(){
+        this.x+=10
+        if(this.x>=window.innerWidth){
+            this.x=0
+        }
+        this.pikachuEl.style.transform= `translate(${this.x}px)`
+   }
+   remover(){
+    document.querySelector('#Pikachu').removeChild(this.pikachuEl)
+   }
+}
+    let pikachus = [new pikachu]
+
+ setInterval(()=>{
+    for(let i=0 ; i<pikachus.length; i++ ){
+        pikachus[i].correr()
+    }
+ },16)  
+    let novopikachu = document.querySelector('#novo')
+    novopikachu.addEventListener('click',()=>{
+             pikachus.push(new pikachu())
+              })
+    let menospikachu = document.querySelector('#menos')
+    menospikachu.addEventListener('click',()=>{
+            pikachus[0].remover()
+            pikachus.shift()
+              })
+
+    </script>
+</body>
+</html>
